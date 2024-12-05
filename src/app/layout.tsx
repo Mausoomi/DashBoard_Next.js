@@ -1,6 +1,9 @@
+
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
-import "./globals.css"
+
+import "./globals.css";
+
 
 export const metadata = {
   title: "Next.js",
@@ -18,7 +21,7 @@ export default function RootLayout({
         <NavBar />
         <div className="flex">
           <div className="w-[15%]">
-            <SideBar />
+            <SideBar/>
           </div>
           <div className="w-[85%]">{children}</div>
         </div>

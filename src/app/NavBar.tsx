@@ -27,6 +27,7 @@ type DropDownItem = {
   item: string;
   link: string;
 };
+
 function NavBar() {
   const [allDropDown, setAllDropDown] = useState(false);
   const [ProfileDropDown, setProfileDropDown] = useState(false);
