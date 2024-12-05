@@ -8,7 +8,7 @@ type DropDownProps = {
   Iconprop: React.FC;
   heading: string;
   DataArray: DropDownItem[];
-  showDropDown: Boolean;
+  showDropDown: boolean;
   setShowDropDown: () => void;
 };
 
