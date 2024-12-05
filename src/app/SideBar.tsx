@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SideBarItem from "./Components/SideBarItem";
+
 import Image from "next/image";
 import reload from "../../public/icons/refresh.png";
 import { useState } from "react";
@@ -25,7 +25,7 @@ import Task from "../../public/icons/task.png";
 
 type SideBarDataItem = {
   item: string;
-  icon: any;
+  icon:  React.ReactNode;
   link: string;
 };
 
@@ -50,101 +50,101 @@ function SideBar() {
       data: [
         {
           item: "Overview",
-          icon: Overview,
+          icon:  <Image src={Overview} alt="All" width={20} height={20} />,
           link: "",
         },
-        {
-          item: "Favorites",
-          icon: Favorites,
-          link: "",
-        },
-        {
-          item: "Chats",
-          icon: Chats,
-          link: "",
-        },
-        {
-          item: "Contacts",
-          icon: Contacts,
-          link: "",
-        },
+        // {
+        //   item: "Favorites",
+        //   icon: Favorites,
+        //   link: "",
+        // },
+        // {
+        //   item: "Chats",
+        //   icon: Chats,
+        //   link: "",
+        // },
+        // {
+        //   item: "Contacts",
+        //   icon: Contacts,
+        //   link: "",
+        // },
       ],
     },
-    {
-      type: "Management",
-      data: [
-        {
-          item: "Individuals",
-          icon: Individuals,
-          link: "",
-        },
-        {
-          item: "Groups",
-          icon: Groups,
-          link: "",
-        },
-        {
-          item: "Residential nuisance",
-          icon: Residential,
-          link: "",
-        },
-        {
-          item: "Criminal Undermining",
-          icon: sad,
-          link: "",
-        },
-        {
-          item: "BIBOB",
-          icon: happy,
-          link: "",
-        },
-        {
-          item: "Hotspots",
-          icon: Hotspots,
-          link: "",
-        },
-        {
-          item: "Reports",
-          icon: Report,
-          link: "",
-        },
-      ],
-    },
-    {
-      type: "Productivity",
-      data: [
-        {
-          item: "Agenda",
-          icon: Agenda,
-          link: "",
-        },
-        {
-          item: "Meeting",
-          icon: Meeting,
-          link: "",
-        },
-        {
-          item: "Documents",
-          icon: Documents,
-          link: "",
-        },
-        {
-          item: "Task",
-          icon: Task,
-          link: "",
-        },
-      ],
-    },
-    {
-      type: "Other",
-      data: [
-        {
-          item: "All",
-          icon: Task,
-          link: "",
-        },
-      ],
-    },
+    // {
+    //   type: "Management",
+    //   data: [
+    //     {
+    //       item: "Individuals",
+    //       icon: Individuals,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Groups",
+    //       icon: Groups,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Residential nuisance",
+    //       icon: Residential,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Criminal Undermining",
+    //       icon: sad,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "BIBOB",
+    //       icon: happy,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Hotspots",
+    //       icon: Hotspots,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Reports",
+    //       icon: Report,
+    //       link: "",
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: "Productivity",
+    //   data: [
+    //     {
+    //       item: "Agenda",
+    //       icon: Agenda,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Meeting",
+    //       icon: Meeting,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Documents",
+    //       icon: Documents,
+    //       link: "",
+    //     },
+    //     {
+    //       item: "Task",
+    //       icon: Task,
+    //       link: "",
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: "Other",
+    //   data: [
+    //     {
+    //       item: "All",
+    //       icon: Task,
+    //       link: "",
+    //     },
+    //   ],
+    // },
   ];
   const toggleSection = (section: string) => {
     setExpandedSections((prev) => ({
@@ -192,12 +192,15 @@ function SideBar() {
                   key={idx}
                   className="flex items-center gap-4 py-5  hover:bg-gray-100 rounded-lg transition"
                 >
-                  <Image
+                  {/* <Image
                     src={item.icon} // Fallback for empty icon
                     alt={item.item}
                     width={20}
                     height={20}
-                  />
+                  /> */}
+                  <div>
+                    {item.icon}
+                  </div>
                   <p className="text-[#404040] text-sm font-normal">
                     {item.item}
                   </p>

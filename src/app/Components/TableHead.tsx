@@ -3,7 +3,7 @@ import React from 'react'
 import icon from "../../../public/icons/user-group.png"
 import arrow from "../../../public/icons/Arrow-down.png"
 import pinIcon from "../../../public/icons/pin.png"
-import eye from "../../../public/icons/eye.png"
+// import eye from "../../../public/icons/eye.png"
 // import DropDown from './DropDown';
 
 // type DropDownItem = {

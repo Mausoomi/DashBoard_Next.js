@@ -13,13 +13,13 @@ import profile from "../../public/image 1.png";
 import maximizer from "../../public/icons/maximize-4.png";
 import { FaPlus } from "react-icons/fa6";
 import dashboard from "../../public/icons/view-grid.png";
-import Groups from "../../public/icons/user-group.png";
-import Individuals from "../../public/icons/user.png";
-import Hotspots from "../../public/icons/status-online.png";
-import AdvancedSearch from "../../public/icons/document-search.svg";
-import Language from "../../public/icons/globe-alt.png";
-import Setting from "../../public/icons/cog.png";
-import logOut from "../../public/icons/logout.png";
+// import Groups from "../../public/icons/user-group.png";
+// import Individuals from "../../public/icons/user.png";
+// import Hotspots from "../../public/icons/status-online.png";
+// import AdvancedSearch from "../../public/icons/document-search.svg";
+// import Language from "../../public/icons/globe-alt.png";
+// import Setting from "../../public/icons/cog.png";
+// import logOut from "../../public/icons/logout.png";
 import menu from "../../public/icons/menu.png";
 
 type DropDownItem = {
