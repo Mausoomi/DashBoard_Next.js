@@ -13,13 +13,13 @@ import profile from "../../public/image 1.png";
 import maximizer from "../../public/icons/maximize-4.png";
 import { FaPlus } from "react-icons/fa6";
 import dashboard from "../../public/icons/view-grid.png";
-// import Groups from "../../public/icons/user-group.png";
-// import Individuals from "../../public/icons/user.png";
-// import Hotspots from "../../public/icons/status-online.png";
-// import AdvancedSearch from "../../public/icons/document-search.svg";
-// import Language from "../../public/icons/globe-alt.png";
-// import Setting from "../../public/icons/cog.png";
-// import logOut from "../../public/icons/logout.png";
+import Groups from "../../public/icons/user-group.png";
+import Individuals from "../../public/icons/user.png";
+import Hotspots from "../../public/icons/status-online.png";
+import AdvancedSearch from "../../public/icons/document-search.svg";
+import Language from "../../public/icons/globe-alt.png";
+import Setting from "../../public/icons/cog.png";
+import logOut from "../../public/icons/logout.png";
 import menu from "../../public/icons/menu.png";
 
 type DropDownItem = {
@@ -37,50 +37,50 @@ function NavBar() {
       icon: <Image src={dashboard} alt="All" width={20} height={20} />,
       link: "",
     },
-    // {
-    //   item: "Groups",
-    //   icon: Groups,
-    //   link: "",
-    // },
-    // {
-    //   item: "Individuals",
-    //   icon: Individuals,
-    //   link: "",
-    // },
-    // {
-    //   item: "Hotspots",
-    //   icon: Hotspots,
-    //   link: "",
-    // },
-    // {
-    //   item: "Advanced Search",
-    //   icon: AdvancedSearch,
-    //   link: "",
-    // },
+    {
+      item: "Groups",
+      icon:  <Image src={Groups} alt="All" width={20} height={20} />,
+      link: "",
+    },
+    {
+      item: "Individuals",
+      icon:  <Image src={Individuals} alt="All" width={20} height={20} />,
+      link: "",
+    },
+    {
+      item: "Hotspots",
+      icon:  <Image src={Hotspots} alt="All" width={20} height={20} />,
+      link: "",
+    },
+    {
+      item: "Advanced Search",
+      icon:  <Image src={AdvancedSearch} alt="All" width={20} height={20} />,
+      link: "",
+    },
   ];
 
-  // const ProfileDetailDropDown: DropDownItem[] = [
-  //   {
-  //     item: "Full screen",
-  //     icon: maximizer,
-  //     link: "",
-  //   },
-  //   {
-  //     item: "Account",
-  //     icon: Individuals,
-  //     link: "",
-  //   },
-  //   {
-  //     item: "Language: English",
-  //     icon: Language,
-  //     link: "",
-  //   },
-  //   {
-  //     item: "Settings",
-  //     icon: Setting,
-  //     link: "",
-  //   },
-  // ];
+  const ProfileDetailDropDown: DropDownItem[] = [
+    {
+      item: "Full screen",
+      icon: <Image src={maximizer} alt="All" width={20} height={20} />,
+      link: "",
+    },
+    {
+      item: "Account",
+      icon: <Image src={Individuals} alt="All" width={20} height={20} />,
+      link: "",
+    },
+    {
+      item: "Language: English",
+      icon: <Image src={Language} alt="All" width={20} height={20} />,
+      link: "",
+    },
+    {
+      item: "Settings",
+      icon: <Image src={Setting} alt="All" width={20} height={20} />,
+      link: "",
+    },
+  ];
 
   const handleAllDropDown = () => {
     setAllDropDown(!allDropDown);
@@ -191,7 +191,7 @@ function NavBar() {
                   <IoIosArrowDown />
                 </button>
               </div>
-              {/* {ProfileDropDown ? (
+              {ProfileDropDown ? (
                 <ul className="absolute right-0 z-10 mt-2 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                   <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
                     <Image
@@ -218,12 +218,9 @@ function NavBar() {
                       className="flex px-4 py-3 text-sm text-gray-700 gap-3"
                       key={index}
                     >
-                      <Image
-                        src={item.icon}
-                        alt={item.item}
-                        width={20}
-                        height={20}
-                      />
+                     <div>
+                      {item.icon}
+                     </div>
                       <p>{item.item}</p>
                     </li>
                   ))}
@@ -234,7 +231,7 @@ function NavBar() {
                 </ul>
               ) : (
                 ""
-              )} */}
+              )}
             </div>
           </div>
         </div>
