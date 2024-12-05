@@ -55,10 +55,10 @@ export default function GroupTable() {
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        // pageSize={5}
+        // rowsPerPageOptions={[5]}
         checkboxSelection
-        disableSelectionOnClick
+        // disableSelectionOnClick
       />
     </Box>
   );
