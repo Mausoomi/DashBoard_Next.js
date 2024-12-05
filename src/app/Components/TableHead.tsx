@@ -4,23 +4,23 @@ import icon from "../../../public/icons/user-group.png"
 import arrow from "../../../public/icons/Arrow-down.png"
 import pinIcon from "../../../public/icons/pin.png"
 import eye from "../../../public/icons/eye.png"
-import DropDown from './DropDown';
+// import DropDown from './DropDown';
 
-type DropDownItem = {
-  icon: any;
-  item: string;
-  link: string;
-};
+// type DropDownItem = {
+//   icon: any;
+//   item: string;
+//   link: string;
+// };
 
 function TableHead() {
 
-     const show: DropDownItem[] = [
-       {
-         item: "All",
-         icon: eye,
-         link: "",
-       }
-     ];
+    //  const show: DropDownItem[] = [
+    //    {
+    //      item: "All",
+    //      icon: eye,
+    //      link: "",
+    //    }
+    //  ];
 
   return (
     <div>
@@ -37,7 +37,7 @@ function TableHead() {
           </div>
         </div>
         <div>
-          <DropDown heading="Show/Hide Columns" icon={eye} data={show} />
+          {/* <DropDown heading="Show/Hide Columns" icon={eye} data={show} /> */}
         </div>
       </div>
     </div>

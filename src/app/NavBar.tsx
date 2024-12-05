@@ -23,7 +23,7 @@ import logOut from "../../public/icons/logout.png";
 import menu from "../../public/icons/menu.png";
 
 type DropDownItem = {
-  icon: any;
+  icon: React.ReactNode;
   item: string;
   link: string;
 };
@@ -34,53 +34,53 @@ function NavBar() {
   const AllDropDown: DropDownItem[] = [
     {
       item: "All",
-      icon: dashboard,
+      icon: <Image src={dashboard} alt="All" width={20} height={20} />,
       link: "",
     },
-    {
-      item: "Groups",
-      icon: Groups,
-      link: "",
-    },
-    {
-      item: "Individuals",
-      icon: Individuals,
-      link: "",
-    },
-    {
-      item: "Hotspots",
-      icon: Hotspots,
-      link: "",
-    },
-    {
-      item: "Advanced Search",
-      icon: AdvancedSearch,
-      link: "",
-    },
+    // {
+    //   item: "Groups",
+    //   icon: Groups,
+    //   link: "",
+    // },
+    // {
+    //   item: "Individuals",
+    //   icon: Individuals,
+    //   link: "",
+    // },
+    // {
+    //   item: "Hotspots",
+    //   icon: Hotspots,
+    //   link: "",
+    // },
+    // {
+    //   item: "Advanced Search",
+    //   icon: AdvancedSearch,
+    //   link: "",
+    // },
   ];
 
-  const ProfileDetailDropDown: DropDownItem[] = [
-    {
-      item: "Full screen",
-      icon: maximizer,
-      link: "",
-    },
-    {
-      item: "Account",
-      icon: Individuals,
-      link: "",
-    },
-    {
-      item: "Language: English",
-      icon: Language,
-      link: "",
-    },
-    {
-      item: "Settings",
-      icon: Setting,
-      link: "",
-    },
-  ];
+  // const ProfileDetailDropDown: DropDownItem[] = [
+  //   {
+  //     item: "Full screen",
+  //     icon: maximizer,
+  //     link: "",
+  //   },
+  //   {
+  //     item: "Account",
+  //     icon: Individuals,
+  //     link: "",
+  //   },
+  //   {
+  //     item: "Language: English",
+  //     icon: Language,
+  //     link: "",
+  //   },
+  //   {
+  //     item: "Settings",
+  //     icon: Setting,
+  //     link: "",
+  //   },
+  // ];
 
   const handleAllDropDown = () => {
     setAllDropDown(!allDropDown);
@@ -130,12 +130,15 @@ function NavBar() {
                     className="flex px-4 py-3 text-sm text-gray-700 gap-3"
                     key={index}
                   >
-                    <Image
+                    <div>
+                      {item.icon}
+                    </div>
+                    {/* <Image
                       src={item.icon}
                       alt={item.item}
                       width={20}
                       height={20}
-                    />
+                    /> */}
                     <p>{item.item}</p>
                   </li>
                 ))}
@@ -188,7 +191,7 @@ function NavBar() {
                   <IoIosArrowDown />
                 </button>
               </div>
-              {ProfileDropDown ? (
+              {/* {ProfileDropDown ? (
                 <ul className="absolute right-0 z-10 mt-2 w-64 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                   <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
                     <Image
@@ -207,7 +210,7 @@ function NavBar() {
                   </li>
 
                   <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
-                    {/* <Image src={logOut} alt="logOut" width={20} height={20} /> */}
+                   
                     <p>Dark / Light modus</p>
                   </li>
                   {ProfileDetailDropDown.map((item, index) => (
@@ -231,7 +234,7 @@ function NavBar() {
                 </ul>
               ) : (
                 ""
-              )}
+              )} */}
             </div>
           </div>
         </div>
