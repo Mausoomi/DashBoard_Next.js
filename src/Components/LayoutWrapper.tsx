@@ -22,8 +22,7 @@ export default function LayoutWrapper({
   return (
     <div>
       <NavBar
-        // toggleSideBar={() => dispatch(toggleSidebar())}
-        // sidebarState={sidebarState}
+       
       />
       <div className="flex">
         {sidebarState !== "hidden" && (
