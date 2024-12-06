@@ -22,7 +22,7 @@ import Agenda from "../../public/icons/server.png";
 import Meeting from "../../public/icons/meeting.png";
 import Documents from "../../public/icons/folder.png";
 import Task from "../../public/icons/task.png";
-import TopMenuBar from "./TopMenuBar";
+
 
 type SideBarDataItem = {
   item: string;

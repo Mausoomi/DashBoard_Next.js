@@ -4,7 +4,7 @@
 import { useState } from "react";
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
-import { ReactNode } from "react";
+
 import { Provider } from "react-redux";
 import { store } from "../Store/store";
 import TopMenuBar from "./TopMenuBar";

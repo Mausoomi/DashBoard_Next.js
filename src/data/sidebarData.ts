@@ -1,21 +1,21 @@
-import Image from "next/image";
-import arrowUp from "../../public/icons/Arrow-up.png";
-import arrowDown from "../../public/icons/Arrow-down.png";
+// import Image from "next/image";
+// import arrowUp from "../../public/icons/Arrow-up.png";
+// import arrowDown from "../../public/icons/Arrow-down.png";
 import Overview from "../../public/icons/view-grid.png";
-import Favorites from "../../public/icons/star.png";
-import Chats from "../../public/icons/chat.png";
-import Contacts from "../../public/icons/phone.png";
-import Individuals from "../../public/icons/user.png";
-import Groups from "../../public/icons/user-group.png";
-import Residential from "../../public/icons/office-building.png";
-import sad from "../../public/icons/emoji-sad.png";
-import happy from "../../public/icons/emoji-happy.png";
-import Hotspots from "../../public/icons/status-online.png";
-import Report from "../../public/icons/report.png";
-import Agenda from "../../public/icons/server.png";
-import Meeting from "../../public/icons/meeting.png";
-import Documents from "../../public/icons/folder.png";
-import Task from "../../public/icons/task.png";
+// import Favorites from "../../public/icons/star.png";
+// import Chats from "../../public/icons/chat.png";
+// import Contacts from "../../public/icons/phone.png";
+// import Individuals from "../../public/icons/user.png";
+// import Groups from "../../public/icons/user-group.png";
+// import Residential from "../../public/icons/office-building.png";
+// import sad from "../../public/icons/emoji-sad.png";
+// import happy from "../../public/icons/emoji-happy.png";
+// import Hotspots from "../../public/icons/status-online.png";
+// import Report from "../../public/icons/report.png";
+// import Agenda from "../../public/icons/server.png";
+// import Meeting from "../../public/icons/meeting.png";
+// import Documents from "../../public/icons/folder.png";
+// import Task from "../../public/icons/task.png";
 import { StaticImageData } from "next/image";
 
 type SideBarDataItem = {
