@@ -45,9 +45,9 @@ function NavBar() {
   const isTopMenuVisible = useSelector(
     (state: RootState) => state.setting.isTopMenuVisible
   );
-  const isBothMenuVisible = useSelector(
-    (state: RootState) => state.setting.isBothMenuVisible
-  );
+  // const isBothMenuVisible = useSelector(
+  //   (state: RootState) => state.setting.isBothMenuVisible
+  // );
   
   const sidebarState = useSelector(
     (state: RootState) => state.sidebar.sidebarState
