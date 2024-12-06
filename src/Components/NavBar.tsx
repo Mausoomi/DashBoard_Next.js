@@ -22,13 +22,21 @@ import Setting from "../../public/icons/cog.png";
 import logOut from "../../public/icons/logout.png";
 import menu from "../../public/icons/menu.png";
 
+
 type DropDownItem = {
   icon: React.ReactNode;
   item: string;
   link: string;
 };
 
-function NavBar() {
+type NavBarProp = {
+  toggleSideBar: () => void;
+  sidebarState:  "full" | "icons" | "hidden";
+  
+};
+
+function NavBar(props: NavBarProp) {
+  const { toggleSideBar, sidebarState } = props;
   const [allDropDown, setAllDropDown] = useState(false);
   const [ProfileDropDown, setProfileDropDown] = useState(false);
 
@@ -40,22 +48,22 @@ function NavBar() {
     },
     {
       item: "Groups",
-      icon:  <Image src={Groups} alt="All" width={20} height={20} />,
+      icon: <Image src={Groups} alt="All" width={20} height={20} />,
       link: "",
     },
     {
       item: "Individuals",
-      icon:  <Image src={Individuals} alt="All" width={20} height={20} />,
+      icon: <Image src={Individuals} alt="All" width={20} height={20} />,
       link: "",
     },
     {
       item: "Hotspots",
-      icon:  <Image src={Hotspots} alt="All" width={20} height={20} />,
+      icon: <Image src={Hotspots} alt="All" width={20} height={20} />,
       link: "",
     },
     {
       item: "Advanced Search",
-      icon:  <Image src={AdvancedSearch} alt="All" width={20} height={20} />,
+      icon: <Image src={AdvancedSearch} alt="All" width={20} height={20} />,
       link: "",
     },
   ];
@@ -81,7 +89,17 @@ function NavBar() {
       icon: <Image src={Setting} alt="All" width={20} height={20} />,
       link: "",
     },
+   
   ];
+
+  const menuIcon =
+    sidebarState === "full" ? (
+      <Image src={menu} alt="logo" width={28} height={28} /> 
+    ) : sidebarState === "icons" ? (
+      "Hide Sidebar"
+    ) : (
+      "Show Full Sidebar"
+    ); 
 
   const handleAllDropDown = () => {
     setAllDropDown(!allDropDown);
@@ -94,7 +112,8 @@ function NavBar() {
     <div>
       <div className="flex justify-between bg-white rounded-lg p-4 shadow-md">
         <div className="flex gap-4 items-center">
-          <Image src={menu} alt="logo" width={28} height={28} />
+          <button onClick={toggleSideBar}>{menuIcon}</button>
+
           <Image src={logo} alt="logo" width={40} height={40} />
           <p className="text-[#0F67B1] font-medium  text-base ">
             Youth & Safty
@@ -131,15 +150,8 @@ function NavBar() {
                     className="flex px-4 py-3 text-sm text-gray-700 gap-3"
                     key={index}
                   >
-                    <div>
-                      {item.icon}
-                    </div>
-                    {/* <Image
-                      src={item.icon}
-                      alt={item.item}
-                      width={20}
-                      height={20}
-                    /> */}
+                    <div>{item.icon}</div>
+
                     <p>{item.item}</p>
                   </li>
                 ))}
@@ -154,6 +166,7 @@ function NavBar() {
             <FaPlus />
             <p> Add</p>
           </div>
+          <div className=" bg-[#C2C2C2] py-4 w-[1px] h-[24px]"> </div>
           <div className=" border-[#E0E0E0] border-[1px]  rounded-[50%] w-[48px] h-[48px] flex items-center justify-center">
             <Image src={chat} alt="chat" width={20} />
           </div>
@@ -163,10 +176,7 @@ function NavBar() {
           <div className=" border-[#E0E0E0] border-[1px]  rounded-[50%] w-[48px] h-[48px] flex items-center justify-center">
             <Image src={star} alt="star" width={20} />
           </div>
-          <div className=" bg-[#C2C2C2] py-4 w-[1px] h-[24px]"> </div>
-          <div className=" border-[#E0E0E0] border-[1px]  rounded-[50%] w-[48px] h-[48px] flex items-center justify-center">
-            <Image src={maximizer} alt="maximizer" width={20} />
-          </div>
+
           <div className=" bg-[#C2C2C2] py-4 w-[1px] h-[24px]"> </div>
           <div className="flex border-[1px] border-[#E0E0E0]  rounded-[50px] p-[6px]">
             <div>
@@ -211,7 +221,6 @@ function NavBar() {
                   </li>
 
                   <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
-                   
                     <p>Dark / Light modus</p>
                   </li>
                   {ProfileDetailDropDown.map((item, index) => (
@@ -219,12 +228,29 @@ function NavBar() {
                       className="flex px-4 py-3 text-sm text-gray-700 gap-3"
                       key={index}
                     >
-                     <div>
-                      {item.icon}
-                     </div>
+                      <div>{item.icon}</div>
                       <p>{item.item}</p>
                     </li>
                   ))}
+                  <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
+                    <div>
+                      <Image src={Setting} alt="All" width={20} height={20} />
+                    </div>
+                    <p>Top Menu</p>
+                  </li>
+                  <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
+                    <div>
+                      <Image src={Setting} alt="All" width={20} height={20} />
+                    </div>
+                    <p>Side Menu</p>
+                  </li>
+                  <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
+                    <div>
+                      <Image src={Setting} alt="All" width={20} height={20} />
+                    </div>
+                    <p>Both Menu</p>
+                  </li>
+
                   <li className="flex px-4 py-3 text-sm text-[#CB3A31] gap-3">
                     <Image src={logOut} alt="logOut" width={20} height={20} />
                     <p>Logout</p>

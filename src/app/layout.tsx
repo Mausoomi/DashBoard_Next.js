@@ -1,9 +1,5 @@
-
-import NavBar from "./NavBar";
-import SideBar from "./SideBar";
-
 import "./globals.css";
-
+import LayoutWrapper from "../Components/LayoutWrapper";
 
 export const metadata = {
   title: "Next.js",
@@ -18,13 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar />
-        <div className="flex">
-          <div className="w-[15%]">
-            <SideBar/>
-          </div>
-          <div className="w-[85%]">{children}</div>
-        </div>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

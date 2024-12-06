@@ -22,10 +22,11 @@ import Agenda from "../../public/icons/server.png";
 import Meeting from "../../public/icons/meeting.png";
 import Documents from "../../public/icons/folder.png";
 import Task from "../../public/icons/task.png";
+import TopMenuBar from "./TopMenuBar";
 
 type SideBarDataItem = {
   item: string;
-  icon:  React.ReactNode;
+  icon: React.ReactNode;
   link: string;
 };
 
@@ -34,7 +35,13 @@ type SideBarItem = {
   data: SideBarDataItem[];
 };
 
-function SideBar() {
+type SideBarProps = {
+  showIconsOnly: boolean;
+};
+
+function SideBar(props: SideBarProps) {
+  const { showIconsOnly } = props;
+
   const [expandedSections, setExpandedSections] = useState<
     Record<string, boolean>
   >({
@@ -146,59 +153,89 @@ function SideBar() {
       ],
     },
   ];
+
   const toggleSection = (section: string) => {
     setExpandedSections((prev) => ({
       ...prev,
-      [section]: !prev[section], 
+      [section]: !prev[section],
     }));
   };
+
   return (
     <div>
       <div className=" flex flex-col gap-2 py-2">
-        <div className="flex bg-white rounded-xl items-center justify-center p-2 shadow-md">
-          <Image src={reload} width={20} height={20} alt="refresh" />
-          <p className="text-[#757575] text-sm p-2">Updated 6 minutes ago</p>
+        <div className=" flex ">
+          <div className="flex bg-white rounded-xl items-center justify-center p-2 shadow-md">
+            {showIconsOnly ? (
+              <Image src={reload} width={20} height={20} alt="refresh" />
+            ) : (
+              <>
+                <Image src={reload} width={20} height={20} alt="refresh" />
+                <p className="text-[#757575] text-sm ">Updated 6 minutes ago</p>
+              </>
+            )}
+          </div>
         </div>
 
         {SideBarDetails.map((section, index) => (
-          <div key={index} className=" bg-white rounded-xl p-4 shadow-md">
-          
+          <div key={index} className=" bg-white rounded-xl py-1 shadow-md">
             <div
-              className="flex justify-between items-center cursor-pointer py-2    "
+              className={`flex ${
+                showIconsOnly ? " justify-center " : " justify-between "
+              } items-center cursor-pointer py-2 px-3 `}
               onClick={() => toggleSection(section.type)}
             >
-              <h3 className="font-semibold text-[#757575] text-[12px]">
-                {section.type}
-              </h3>
-              <Image
-                src={expandedSections[section.type] ? arrowUp : arrowDown}
-                alt="toggle"
-                width={20}
-                height={20}
-              />
+              {showIconsOnly ? (
+                <Image
+                  src={expandedSections[section.type] ? arrowUp : arrowDown}
+                  alt="toggle"
+                  width={20}
+                  height={20}
+                />
+              ) : (
+                <>
+                  <h3 className="font-semibold text-[#757575] text-[12px]">
+                    {section.type}
+                  </h3>
+                  <Image
+                    src={expandedSections[section.type] ? arrowUp : arrowDown}
+                    alt="toggle"
+                    width={20}
+                    height={20}
+                  />
+                </>
+              )}
             </div>
 
-           
             <ul
-              className={`overflow-hidden transition-all duration-300 ease-in-out`}
+              className={`overflow-hidden transition-all duration-300 ease-in-out `}
               style={{
                 maxHeight: expandedSections[section.type]
-                  ? `${section.data.length * 80}px` 
+                  ? `${section.data.length * 80}px`
                   : "0",
               }}
             >
               {section.data.map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex items-center gap-4 py-5  hover:bg-gray-100 rounded-lg transition"
+                  className={`flex items-center ${
+                    showIconsOnly ? "justify-center" : " justify-start"
+                  } gap-4 py-5 px-3  hover:bg-gray-100  transition`}
                 >
-                
-                  <div>
-                    {item.icon}
-                  </div>
-                  <p className="text-[#404040] text-sm font-normal">
-                    {item.item}
-                  </p>
+                  {showIconsOnly ? (
+                    <div>
+                      {item.icon}
+                      <Image src={Favorites} alt="All" width={20} height={20} />
+                      ,
+                    </div>
+                  ) : (
+                    <>
+                      <div>{item.icon}</div>
+                      <p className="text-[#404040] text-sm font-normal">
+                        {item.item}
+                      </p>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
@@ -210,7 +247,6 @@ function SideBar() {
 }
 
 export default SideBar;
-
 
 // "use client";
 
@@ -237,8 +273,7 @@ export default SideBar;
 // import Documents from "../../public/icons/folder.png";
 // import Task from "../../public/icons/task.png";
 // import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, DragEndEvent, closestCenter } from "@dnd-kit/core";
-// import { SortableContext, verticalListSortingStrategy, useSortable, sortableKeyboardCoordinates } from "@dnd-kit/sortable"; 
-
+// import { SortableContext, verticalListSortingStrategy, useSortable, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 // type SideBarDataItem = {
 //   Itemid:Number;
@@ -504,4 +539,3 @@ export default SideBar;
 // }
 
 // export default SideBar;
-

@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import icon from "../../../public/icons/user-group.png";
-import arrow from "../../../public/icons/Arrow-down.png";
-import pinIcon from "../../../public/icons/pin.png";
-import eye from "../../../public/icons/eye.png";
+import icon from "../../public/icons/user-group.png";
+import arrow from "../../public/icons/Arrow-down.png";
+import pinIcon from "../../public/icons/pin.png";
+import eye from "../../public/icons/eye.png";
 import DropDown from "./DropDown";
-import filter from "../../../public/icons/filter.png"
-import chartIcon from "../../../public/icons/chart-pie.png"
-import settingicon from "../../../public/icons/cog.png"
+import filter from "../../public/icons/filter.png"
+import chartIcon from "../../public/icons/chart-pie.png"
+import settingicon from "../../public/icons/cog.png"
 
 const EyeIcon = () => (
   <Image src={eye} alt="icon" width={20} height={20} />
