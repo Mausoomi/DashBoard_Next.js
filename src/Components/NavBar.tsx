@@ -21,7 +21,10 @@ import Language from "../../public/icons/globe-alt.png";
 import Setting from "../../public/icons/cog.png";
 import logOut from "../../public/icons/logout.png";
 import menu from "../../public/icons/menu.png";
-
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../Store/store";
+import { toggleTopMenu, toggleBothMenu } from "../Store/Reducers/settingSlice";
+import { toggleSidebar } from "../Store/Reducers/sidebarSlice";
 
 type DropDownItem = {
   icon: React.ReactNode;
@@ -29,16 +32,27 @@ type DropDownItem = {
   link: string;
 };
 
-type NavBarProp = {
-  toggleSideBar: () => void;
-  sidebarState:  "full" | "icons" | "hidden";
-  
-};
+// type NavBarProp = {
+//   toggleSideBar: () => void;
+//   sidebarState:  "full" | "icons" | "hidden";
 
-function NavBar(props: NavBarProp) {
-  const { toggleSideBar, sidebarState } = props;
+// };
+
+function NavBar() {
+  // const { toggleSideBar, sidebarState } = props;
   const [allDropDown, setAllDropDown] = useState(false);
   const [ProfileDropDown, setProfileDropDown] = useState(false);
+  const isTopMenuVisible = useSelector(
+    (state: RootState) => state.setting.isTopMenuVisible
+  );
+  const isBothMenuVisible = useSelector(
+    (state: RootState) => state.setting.isBothMenuVisible
+  );
+  
+  const sidebarState = useSelector(
+    (state: RootState) => state.sidebar.sidebarState
+  );
+  const dispatch = useDispatch();
 
   const AllDropDown: DropDownItem[] = [
     {
@@ -89,17 +103,16 @@ function NavBar(props: NavBarProp) {
       icon: <Image src={Setting} alt="All" width={20} height={20} />,
       link: "",
     },
-   
   ];
 
   const menuIcon =
     sidebarState === "full" ? (
-      <Image src={menu} alt="logo" width={28} height={28} /> 
+      <Image src={menu} alt="logo" width={28} height={28} />
     ) : sidebarState === "icons" ? (
       "Hide Sidebar"
     ) : (
       "Show Full Sidebar"
-    ); 
+    );
 
   const handleAllDropDown = () => {
     setAllDropDown(!allDropDown);
@@ -112,7 +125,7 @@ function NavBar(props: NavBarProp) {
     <div>
       <div className="flex justify-between bg-white rounded-lg p-4 shadow-md">
         <div className="flex gap-4 items-center">
-          <button onClick={toggleSideBar}>{menuIcon}</button>
+          <button onClick={() => dispatch(toggleSidebar())}>{menuIcon}</button>
 
           <Image src={logo} alt="logo" width={40} height={40} />
           <p className="text-[#0F67B1] font-medium  text-base ">
@@ -232,24 +245,64 @@ function NavBar(props: NavBarProp) {
                       <p>{item.item}</p>
                     </li>
                   ))}
-                  <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
-                    <div>
-                      <Image src={Setting} alt="All" width={20} height={20} />
-                    </div>
-                    <p>Top Menu</p>
-                  </li>
-                  <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
-                    <div>
-                      <Image src={Setting} alt="All" width={20} height={20} />
-                    </div>
-                    <p>Side Menu</p>
-                  </li>
-                  <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
-                    <div>
-                      <Image src={Setting} alt="All" width={20} height={20} />
-                    </div>
-                    <p>Both Menu</p>
-                  </li>
+                  <button
+                    onClick={() => dispatch(toggleTopMenu())}
+                    className="w-full"
+                  >
+                    <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
+                      <div>
+                        <Image src={Setting} alt="All" width={20} height={20} />
+                      </div>
+
+                      <p>
+                        {isTopMenuVisible ? "Hide Top Menu" : "Show Top Menu"}
+                      </p>
+                    </li>
+                  </button>
+                  <button
+                    onClick={() => dispatch(toggleSidebar())}
+                    className="w-full"
+                  >
+                    <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
+                      <div>
+                        <Image src={Setting} alt="All" width={20} height={20} />
+                      </div>
+                      <p>
+                        {sidebarState === "full"
+                          ? "Hide Side Menu"
+                          : sidebarState === "icons"
+                          ? "Hide Side Menu"
+                          : "Show  Sidebar"}
+                      </p>
+                    </li>
+                  </button>
+
+                  <button
+                    onClick={() => dispatch(toggleBothMenu())}
+                    className="w-full"
+                    disabled={
+                      sidebarState === "full" ||
+                      sidebarState === "icons" ||
+                      isTopMenuVisible
+                    }
+                  >
+                    <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
+                      <div>
+                        <Image src={Setting} alt="All" width={20} height={20} />
+                      </div>
+                      <div>
+                        <div>
+                          {sidebarState === "full" ||
+                          sidebarState === "icons" ||
+                          isTopMenuVisible ? (
+                            <p className="line-through">Hide Both Menu</p>
+                          ) : (
+                            <p>Show Both Menu</p>
+                          )}
+                        </div>
+                      </div>
+                    </li>
+                  </button>
 
                   <li className="flex px-4 py-3 text-sm text-[#CB3A31] gap-3">
                     <Image src={logOut} alt="logOut" width={20} height={20} />

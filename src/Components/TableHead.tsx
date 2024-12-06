@@ -6,13 +6,12 @@ import arrow from "../../public/icons/Arrow-down.png";
 import pinIcon from "../../public/icons/pin.png";
 import eye from "../../public/icons/eye.png";
 import DropDown from "./DropDown";
-import filter from "../../public/icons/filter.png"
-import chartIcon from "../../public/icons/chart-pie.png"
-import settingicon from "../../public/icons/cog.png"
+import filter from "../../public/icons/filter.png";
+import chartIcon from "../../public/icons/chart-pie.png";
+import settingicon from "../../public/icons/cog.png";
 
-const EyeIcon = () => (
-  <Image src={eye} alt="icon" width={20} height={20} />
-);
+
+const EyeIcon = () => <Image src={eye} alt="icon" width={20} height={20} />;
 
 const FilterIcon = () => (
   <Image src={filter} alt="icon" width={20} height={20} />
@@ -25,8 +24,6 @@ const SettingIcon = () => (
 );
 
 function TableHead() {
-
-
   const AllDropDown = [
     {
       heading: "Show/Hide Columns",
@@ -104,16 +101,19 @@ function TableHead() {
     },
   ];
 
- const [dropDownVisibility, setDropDownVisibility] = useState<boolean[]>(
-   AllDropDown.map(() => false))
+  const [dropDownVisibility, setDropDownVisibility] = useState<boolean[]>(
+    AllDropDown.map(() => false)
+  );
 
- const handleToggleDropDown = (index: number) => {
-   setDropDownVisibility((prev) => {
-     const newVisibility = [...prev];
-     newVisibility[index] = !newVisibility[index]; 
-     return newVisibility;
-   });
- };
+  
+
+  const handleToggleDropDown = (index: number) => {
+    setDropDownVisibility((prev) => {
+      const newVisibility = [...prev];
+      newVisibility[index] = !newVisibility[index];
+      return newVisibility;
+    });
+  };
   return (
     <div>
       <div className="flex items-center gap-3">

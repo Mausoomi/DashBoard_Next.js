@@ -2,27 +2,38 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface settingState {
   isVisible: boolean;
+  isTopMenuVisible: boolean;
+  isSideMenuVisible: boolean;
+  isBothMenuVisible: boolean;
 }
 
 const initialState: settingState = {
-  isVisible: true, // Default state
+  isVisible: true,
+  isTopMenuVisible: true,
+  isSideMenuVisible: true,
+  isBothMenuVisible: false,
 };
 
 const settingSlice = createSlice({
   name: "setting",
   initialState,
   reducers: {
-    toggleSetting: (state) => {
-      state.isVisible = !state.isVisible;
+    toggleTopMenu: (state) => {
+      state.isTopMenuVisible = !state.isTopMenuVisible;
     },
-    showSetting: (state) => {
-      state.isVisible = true;
+    showTopMenu: (state) => {
+      state.isTopMenuVisible = true;
     },
-    hideSetting: (state) => {
-      state.isVisible = false;
+    hideTopMenu: (state) => {
+      state.isTopMenuVisible = false;
+    },
+    toggleBothMenu: (state) => {
+        state.isTopMenuVisible = true;
+        state.isSideMenuVisible= true
     },
   },
 });
 
-export const { toggleSetting, showSetting, hideSetting } = settingSlice.actions;
+export const { toggleTopMenu, showTopMenu, hideTopMenu, toggleBothMenu } =
+  settingSlice.actions;
 export default settingSlice.reducer;
