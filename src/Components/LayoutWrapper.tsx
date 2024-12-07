@@ -22,7 +22,6 @@ export default function LayoutWrapper({
   return (
     <div>
       <NavBar
-       
       />
       <div className="flex">
         {sidebarState !== "hidden" && (
