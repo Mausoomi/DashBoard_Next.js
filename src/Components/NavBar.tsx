@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../public/logo.png";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
@@ -45,8 +45,8 @@ function NavBar() {
   const isTopMenuVisible = useSelector(
     (state: RootState) => state.setting.isTopMenuVisible
   );
-  
-  
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
   const sidebarState = useSelector(
     (state: RootState) => state.sidebar.sidebarState
   );
@@ -81,11 +81,7 @@ function NavBar() {
   ];
 
   const ProfileDetailDropDown: DropDownItem[] = [
-    {
-      item: "Full screen",
-      icon: <Image src={maximizer} alt="All" width={20} height={20} />,
-      link: "",
-    },
+  
     {
       item: "Account",
       icon: <Image src={Individuals} alt="All" width={20} height={20} />,
@@ -118,6 +114,42 @@ function NavBar() {
   const handleProfileDropDown = () => {
     setProfileDropDown(!ProfileDropDown);
   };
+
+  // Handler to toggle fullscreen mode
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement
+        .requestFullscreen()
+        .then(() => {
+          setIsFullscreen(true);
+        })
+        .catch((err) => {
+          console.error(`Failed to enter fullscreen mode: ${err.message}`);
+        });
+    } else {
+      document
+        .exitFullscreen()
+        .then(() => {
+          setIsFullscreen(false);
+        })
+        .catch((err) => {
+          console.error(`Failed to exit fullscreen mode: ${err.message}`);
+        });
+    }
+  };
+
+
+  useEffect(() => {
+    const fullscreenChangeHandler = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener("fullscreenchange", fullscreenChangeHandler);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", fullscreenChangeHandler);
+    };
+  }, []);
 
   return (
     <div>
@@ -234,6 +266,21 @@ function NavBar() {
                   <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
                     <p>Dark / Light modus</p>
                   </li>
+
+                  <button onClick={toggleFullscreen} className="w-full">
+                    <li className="flex px-4 py-3 text-sm text-gray-700 gap-3">
+                      <div>
+                        <Image
+                          src={maximizer}
+                          alt="All"
+                          width={20}
+                          height={20}
+                        />
+                      </div>
+                      <p>{isFullscreen ? "Default screen" : "Full screen"}</p>
+                    </li>
+                  </button>
+
                   {ProfileDetailDropDown.map((item, index) => (
                     <li
                       className="flex px-4 py-3 text-sm text-gray-700 gap-3"
